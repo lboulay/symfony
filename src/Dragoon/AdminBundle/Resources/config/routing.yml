@@ -1,0 +1,7 @@
+dragoon_admin_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: DragoonAdminBundle:Default:index }
+
+dragoon_admin_login:
+    pattern: /login
+    defaults: { _controller:DragoonAdminBundle:Login:index }
