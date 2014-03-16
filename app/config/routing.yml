@@ -1,0 +1,4 @@
+dragoon_admin:
+    resource: "@DragoonAdminBundle/Resources/config/routing.yml"
+    prefix:   /
+
