@@ -1,7 +1,10 @@
 dragoon_admin_login:
     pattern: /login
-    defaults: { _controller:DragoonAdminBundle:Login:index }
-    
+    defaults: { _controller:DragoonAdminBundle:Security:login }
+
+dragoon_admin_login_check:
+    pattern: /login_check
+
 dragoon_admin_dashboard:
     pattern: /dash
     defaults: { _controller:DragoonAdminBundle:Index:index }
