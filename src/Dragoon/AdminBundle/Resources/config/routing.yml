@@ -14,4 +14,4 @@ dragoon_admin_dashboard:
     
 dragoon_admin_user_edit:
     pattern: /user_profile
-    defaults: { _controller:DragoonAdminBundle:User:index }
+    defaults: { _controller:DragoonAdminBundle:User:form }
