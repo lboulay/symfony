@@ -5,6 +5,13 @@ dragoon_admin_login:
 dragoon_admin_login_check:
     pattern: /login_check
 
+dragoon_admin_logout:
+    pattern: /logout
+
 dragoon_admin_dashboard:
     pattern: /dash
     defaults: { _controller:DragoonAdminBundle:Index:index }
+    
+dragoon_admin_user_edit:
+    pattern: /user_profile
+    defaults: { _controller:DragoonAdminBundle:User:index }
