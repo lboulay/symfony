@@ -11,6 +11,11 @@ security:
             logout:      
                 path:  /admin/logout
                 target: /admin/login
+            remember_me:
+                key:      "%secret%"
+                lifetime: 31536000 # 365 jours en secondes
+                path:     /
+                domain:   ~ # Prend la valeur par défaut du domaine courant depuis $_SERVER
             
 
     access_control:

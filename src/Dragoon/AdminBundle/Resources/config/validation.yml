@@ -1,0 +1,16 @@
+Dragoon\AdminBundle\Entity\User:
+    properties:
+        username:
+            - NotBlank: ~
+        password:
+            - NotBlank: ~
+            - Length:
+                min: 2
+                max: 20
+                minMessage: "Votre password doit faire au moins {{ limit }} caractères"
+                maxMessage: "Votre password ne peut pas être plus long que {{ limit }} caractères"
+        email:
+            - Email:
+                message: "{{ value }} n'est pas un email valide."
+                checkMX: true
+        isActive:

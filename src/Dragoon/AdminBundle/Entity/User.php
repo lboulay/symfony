@@ -54,6 +54,14 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * @inheritDoc
      */
+    public function getId()
+    {
+        return $this->id;
+    }
+    
+    /**
+     * @inheritDoc
+     */
     public function getUsername()
     {
         return $this->username;
@@ -74,6 +82,22 @@ class User implements AdvancedUserInterface, \Serializable
     {
         return $this->password;
     }
+    
+    /**
+     * @inheritDoc
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+    
+    /**
+     * @inheritDoc
+     */
+    public function getIsActive()
+    {
+        return $this->isActive;
+    }
 
     /**
      * @inheritDoc
@@ -81,6 +105,30 @@ class User implements AdvancedUserInterface, \Serializable
     public function getRoles()
     {
         return array('ROLE_ADMIN');
+    }
+    
+    /**
+     * @inheritDoc
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    }
+    
+    /**
+     * @inheritDoc
+     */
+    public function setPassword($password)
+    {
+        $this->password = $password;
+    }
+    
+    /**
+     * @inheritDoc
+     */
+    public function setIsActive($active)
+    {
+        $this->isActive = $active;
     }
 
     /**

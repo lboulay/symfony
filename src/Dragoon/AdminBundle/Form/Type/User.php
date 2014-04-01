@@ -14,12 +14,18 @@ class User extends AbstractType
         $builder->add('username', 'text')
                 ->add('password', 'password')
                 ->add('email', 'email')
-                ->add('is_active', 'checkbox');
+                ->add('is_active', 'checkbox', array('required'=>false, ));
     }
 
     public function getName()
     {
         return 'user_profile';
     }
+    
+    public function getDefaultOptions(array $options)
+    {
+        return array(
+            'data_class' => 'Dragoon\AdminBundle\Entity\User',
+        );
+    }
 }
-?>
