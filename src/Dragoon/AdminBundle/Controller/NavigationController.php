@@ -22,6 +22,25 @@ class NavigationController extends Controller
                 'icone' => 'fa-dashboard'
             ),
             array(
+                'route' => 'dragoon_admin_list',
+                'route_param' => 'News',
+                'href' => '',
+                'lib' => 'News',
+                'icone' => 'fa-dashboard'
+            ),
+            array(
+                'route' => 'dragoon_admin_list',
+                'route_param' => 'User',
+                'href' => '',
+                'lib' => 'Utilisateurs',
+                'icone' => 'fa-users'
+            ),
+            array(
+                'href' => '#',
+                'lib' => 'Films',
+                'icone' => 'fa-film'
+            ),
+            array(
                 'href' => '#',
                 'lib' => 'Charts',
                 'icone' => 'fa-bar-chart-o',

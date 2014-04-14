@@ -15,3 +15,24 @@ dragoon_admin_dashboard:
 dragoon_admin_user_edit:
     pattern: /user_profile
     defaults: { _controller:DragoonAdminBundle:User:form }
+
+dragoon_admin_list:
+    pattern: /{entity}/list
+    defaults: { _controller:DragoonAdminBundle:Base:list }
+
+dragoon_admin_create:
+    pattern: /{entity}/create
+    defaults: { _controller:DragoonAdminBundle:Base:edit }
+
+dragoon_admin_edit:
+    pattern: /{entity}/edit/{id}
+    defaults: { _controller:DragoonAdminBundle:Base:edit }
+    requirements:
+        id: \d+
+
+dragoon_admin_delete:
+    pattern: /{entity}/delete/{id}
+    defaults: { _controller:DragoonAdminBundle:Base:edit }
+    requirements:
+        id: \d+
+    

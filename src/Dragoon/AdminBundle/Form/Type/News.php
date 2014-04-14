@@ -7,28 +7,34 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilder;
 use Symfony\Component\Form\FormBuilderInterface;
 
-class User extends AbstractType
+class News extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('username', 'text')
-                ->add('password', 'password')
-                ->add('email', 'email')
-                ->add('is_active', 'checkbox', array('required'=>false))
+        $builder->add('title', 'text')
+                ->add('content', 'textarea')
+                ->add('author', 'entity', array(
+                    'class' => 'DragoonAdminBundle:User'
+                ))
+                ->add('published', 'checkbox', array('required'=>false))
                 ->add('save', 'submit', array('attr' => array('class' => 'btn btn-outline btn-success')))
                 ->add('save&list', 'submit', array('attr' => array('class' => 'btn btn-outline btn-success')))
                 ->add('cancel', 'reset', array('attr' => array('class' => 'btn btn-outline btn-danger')));
     }
-
+    
     public function getName()
     {
-        return 'user_profile';
+        return 'News';
     }
     
     public function getDefaultOptions(array $options)
     {
         return array(
-            'data_class' => 'Dragoon\AdminBundle\Entity\User',
+            'data_class' => 'Dragoon\AdminBundle\Entity\News',
+            'csrf_protection' => true,
+            'csrf_field_name' => '_token',
+            // une clé unique pour aider à la génération du jeton secret
+            'intention'       => 'task_item',
         );
     }
     
@@ -36,7 +42,8 @@ class User extends AbstractType
     {
         return array(
             'id',
-            'username'
+            'title',
+            'author'
         );
     }
 }

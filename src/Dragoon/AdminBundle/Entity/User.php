@@ -48,7 +48,8 @@ class User implements AdvancedUserInterface, \Serializable
     public function __construct()
     {
         $this->isActive = true;
-        $this->salt = md5(uniqid(null, true));
+        //$this->salt = md5(uniqid(null, true));
+        $this->salt = '';
     }
 
     /**
@@ -110,6 +111,14 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * @inheritDoc
      */
+    public function setUsername($username)
+    {
+        $this->username = $username;
+    }
+    
+    /**
+     * @inheritDoc
+     */
     public function setEmail($email)
     {
         $this->email = $email;
@@ -158,8 +167,9 @@ class User implements AdvancedUserInterface, \Serializable
         ) = unserialize($serialized);
     }
     
-    public function isEqualTo(UserInterface $user)
+    public function isEqualTo(AdvancedUserInterface $user)
     {
+        var_dump(gettype($user));echo 'rrrrr';die;
         return $this->username === $user->getUsername();
     }
     
@@ -181,5 +191,10 @@ class User implements AdvancedUserInterface, \Serializable
     public function isEnabled()
     {
         return $this->isActive;
+    }
+    
+    public function __toString()
+    {
+        return $this->getUsername();
     }
 }

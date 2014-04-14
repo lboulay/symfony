@@ -1,0 +1,71 @@
+{% extends 'DragoonAdminBundle::base.html.twig' %}
+
+{% block title %}{% if title is defined %}{{ title }}{% endif %}{% endblock %}
+
+{% block body %}
+                <div class="col-lg-12">
+                    {% for flashMessage in app.session.flashbag.get('success') %}
+                        <div class="alert alert-success alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            {{ flashMessage }}
+                        </div>
+                    {% endfor %}
+                    
+                    {% for flashMessage in app.session.flashbag.get('error') %}
+                        <div class="alert alert-danger alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            {{ flashMessage }}
+                        </div>
+                    {% endfor %}
+                    
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            List
+                            <div class="pull-right">
+                                <a href="{{ path('dragoon_admin_create', {'entity': entity}) }}" class="btn btn-default btn-xs dropdown-toggle">ajouter</a>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <thead>
+                                        <tr>
+                                            {% for item in headers %}
+                                            <th>{{ item }}</th>
+                                            {% endfor %}
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for item in datas %}
+                                        <tr class="odd gradeX">
+                                            {% for header in headers %}
+                                            <td>{{ attribute(item, 'get' ~ header|first|upper ~ header[1:]) }}</td>
+                                            {% endfor %}
+                                            <td class="center">
+                                                <a href="{{ path('dragoon_admin_edit', {'entity': entity, 'id' : item.getId}) }}" class="btn btn-default">Modifier</a>
+                                                <a href="{{ path('dragoon_admin_delete', {'entity': entity, 'id' : item.getId}) }}" class="btn btn-default">supprimer</a>
+                                            </td>
+                                        </tr>
+                                        {% else %}
+                                        <tr class="odd gradeX">
+                                            <td colspan="{{ headers|length + 1 }}">
+                                                <div class="alert alert-info text-center">
+                                                    Pas d'enregistrement
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.row (nested) -->
+                        </div>
+                        
+                    <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+{% endblock %}
