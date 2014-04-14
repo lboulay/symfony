@@ -31,7 +31,15 @@
             <ul class="nav nav-second-level">
                 {% for item2 in item.second %}
                 <li>
-                    <a href="{{ item2.href }}">
+                    <a href="{% if item2.route is defined %}
+                            {% if item2.route_param is defined %}
+                                {{ path(item2.route, {'entity':item2.route_param|lower}) }}
+                            {% else %}
+                                {{ path(item2.route) }}
+                            {% endif %}
+                        {% else %}
+                            {{ item2.href }}
+                        {% endif %}">
                         {% if item2.icone != '' %}
                             <i class="fa {{ item2.icone }} fa-fw"></i>
                         {% endif %}
@@ -42,7 +50,15 @@
                         <ul class="nav nav-third-level">
                             {% for item3 in item2.second %}
                             <li>
-                                <a href="{{ item3.href }}">
+                                <a href="{% if item3.route is defined %}
+                                        {% if item3.route_param is defined %}
+                                            {{ path(item3.route, {'entity':item3.route_param|lower}) }}
+                                        {% else %}
+                                            {{ path(item3.route) }}
+                                        {% endif %}
+                                    {% else %}
+                                        {{ item3.href }}
+                                    {% endif %}">
                                     {% if item3.icone != '' %}
                                         <i class="fa {{ item3.icone }} fa-fw"></i>
                                     {% endif %}

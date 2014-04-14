@@ -38,7 +38,59 @@ class NavigationController extends Controller
             array(
                 'href' => '#',
                 'lib' => 'Films',
-                'icone' => 'fa-film'
+                'icone' => 'fa-film',
+                'second' => array(
+                    array(
+                        'route' => 'dragoon_admin_list',
+                        'route_param' => 'Fiche',
+                        'href' => '',
+                        'lib' => 'Fiche',
+                        'icone' => ''
+                    ),
+                    array(
+                        'route' => 'dragoon_admin_list',
+                        'route_param' => 'Category',
+                        'href' => '',
+                        'lib' => 'Catégorie',
+                        'icone' => ''
+                    ),
+                    array(
+                        'route' => 'dragoon_admin_list',
+                        'route_param' => 'Editeur',
+                        'href' => '',
+                        'lib' => 'Editeur',
+                        'icone' => ''
+                    ),
+                    array(
+                        'route' => 'dragoon_admin_list',
+                        'route_param' => 'Studio',
+                        'href' => '',
+                        'lib' => 'Studio',
+                        'icone' => ''
+                    ),
+                    array(
+                        'route' => 'dragoon_admin_list',
+                        'route_param' => 'Star',
+                        'href' => '',
+                        'lib' => 'Star',
+                        'icone' => ''
+                    ),
+                    array(
+                        'route' => 'dragoon_admin_list',
+                        'route_param' => 'Distributeur',
+                        'href' => '',
+                        'lib' => 'Distributeur',
+                        'icone' => ''
+                    )
+                    ,
+                    array(
+                        'route' => 'dragoon_admin_list',
+                        'route_param' => 'Job',
+                        'href' => '',
+                        'lib' => 'Job',
+                        'icone' => ''
+                    )
+                )
             ),
             array(
                 'href' => '#',
