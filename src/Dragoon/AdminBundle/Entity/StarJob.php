@@ -36,10 +36,10 @@ class StarJob
     /**
      * @var \Doctrine\Common\Collections\ArrayCollection
      *
-     * @ORM\ManyToMany(targetEntity="Dragoon\AdminBundle\Entity\Fiche", mappedBy="stars")
-     * 
+     * @ORM\ManyToOne(targetEntity="Dragoon\AdminBundle\Entity\Fiche", inversedBy="stars", cascade={"remove"})
+     * @ORM\JoinColumn(name="fiche_id", referencedColumnName="id")
      */
-    private $fiches;
+    private $fiche;
  
     
     /**
@@ -85,7 +85,7 @@ class StarJob
     }
 
     /**
-     * Set starType
+     * Set job
      *
      * @param \Dragoon\AdminBundle\Entity\Job $job
      * @return FicheStar
@@ -98,9 +98,9 @@ class StarJob
     }
 
     /**
-     * Get starType
+     * Get job
      *
-     * @return \Dragoon\AdminBundle\Entity\StarType 
+     * @return \Dragoon\AdminBundle\Entity\Job 
      */
     public function getJob()
     {
@@ -111,29 +111,29 @@ class StarJob
      */
     public function __construct()
     {
-        $this->fiches = new \Doctrine\Common\Collections\ArrayCollection();
+        
     }
     
     /**
-     * Add fiches
+     * Set fiche
      *
-     * @param \Dragoon\AdminBundle\Entity\Fiche $fiches
+     * @param \Dragoon\AdminBundle\Entity\Fiche $fiche
      * @return StarJob
      */
-    public function addFiche(\Dragoon\AdminBundle\Entity\Fiche $fiches)
+    public function setFiche(\Dragoon\AdminBundle\Entity\Fiche $fiche)
     {
-        $this->fiches[] = $fiches;
+        $this->fiche = $fiche;
     
         return $this;
     }
 
     /**
-     * Remove fiches
+     * Get fiche
      *
-     * @param \Dragoon\AdminBundle\Entity\Fiche $fiches
+     * @param \Dragoon\AdminBundle\Entity\Fiche $fiche
      */
-    public function removeFiche(\Dragoon\AdminBundle\Entity\Fiche $fiches)
+    public function getFiche(\Dragoon\AdminBundle\Entity\Fiche $fiche)
     {
-        $this->fiches->removeElement($fiches);
+        return $this->fiche;
     }
 }

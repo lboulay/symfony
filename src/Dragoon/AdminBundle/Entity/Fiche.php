@@ -154,15 +154,8 @@ class Fiche
     /**
      * @var ArrayCollection $stars
      *
-     * @ORM\ManyToMany(targetEntity="Dragoon\AdminBundle\Entity\StarJob", inversedBy="fiches", cascade={"persist"})
-     * @ORM\JoinTable(name="fiche_starjob",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="fiche_id", referencedColumnName="id")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="starjob_id", referencedColumnName="id")
-     *   }
-     * )
+     * @ORM\OneToMany(targetEntity="Dragoon\AdminBundle\Entity\StarJob", mappedBy="fiche", cascade={"remove","persist"})
+     * 
      */
     private $stars;
     
@@ -173,7 +166,7 @@ class Fiche
      */
     public function __construct()
     {
-
+        $this->stars = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
     /**
@@ -641,7 +634,12 @@ class Fiche
      */
     public function addStar(\Dragoon\AdminBundle\Entity\StarJob $stars)
     {
-        $this->stars[] = $stars;
+        $stars->setFiche($this);
+        
+        // Si l'objet fait déjà partie de la collection on ne l'ajoute pas
+        if (!$this->stars->contains($stars)) {
+            $this->stars->add($stars);
+        }
     
         return $this;
     }
@@ -664,5 +662,15 @@ class Fiche
     public function getStars()
     {
         return $this->stars;
+    }
+    
+    /**
+     * Set stars
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function setStars(\Doctrine\Common\Collections\Collection $stars)
+    {
+        $this->stars = $stars;
     }
 }

@@ -6,6 +6,7 @@ namespace Dragoon\AdminBundle\Form\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilder;
 use Symfony\Component\Form\FormBuilderInterface;
+use Dragoon\AdminBundle\Form\StarJob;
 
 class Fiche extends AbstractType
 {
@@ -21,6 +22,36 @@ class Fiche extends AbstractType
                 ->add('synopsis', 'textarea')
                 ->add('reference', 'text')
                 ->add('length', 'integer')
+                ->add('categories', 'entity', array(
+                    'class' => 'DragoonAdminBundle:Category',
+                    'expanded' => true,
+                    'multiple' => true
+                ))
+                ->add('distributeurs', 'entity', array(
+                    'class' => 'DragoonAdminBundle:Distributeur',
+                    'expanded' => true,
+                    'multiple' => true
+                ))
+                ->add('editeurs', 'entity', array(
+                    'class' => 'DragoonAdminBundle:Editeur',
+                    'expanded' => true,
+                    'multiple' => true
+                ))
+                ->add('studios', 'entity', array(
+                    'class' => 'DragoonAdminBundle:Studio',
+                    'expanded' => true,
+                    'multiple' => true
+                ))
+                ->add('stars', 'collection', array(
+                    'type' => new StarJob(),
+                    'options' => array(
+                        'data_class' => 'Dragoon\AdminBundle\Entity\StarJob'
+                    ),
+                    'allow_add' => true,
+                    'allow_delete'  => true,
+                    'by_reference' => false,
+                    'attr' => array('data-name'=>'Star','class'=>'multiple well')
+                ))
                 ->add('save', 'submit', array('attr' => array('class' => 'btn btn-outline btn-success')))
                 ->add('save&list', 'submit', array('attr' => array('class' => 'btn btn-outline btn-success')))
                 ->add('cancel', 'reset', array('attr' => array('class' => 'btn btn-outline btn-danger')));
