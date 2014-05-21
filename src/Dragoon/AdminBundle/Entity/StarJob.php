@@ -22,14 +22,14 @@ class StarJob
     /**
      * @var \Doctrine\Common\Collections\ArrayCollection
      
-     * @ORM\ManyToOne(targetEntity="Dragoon\AdminBundle\Entity\Star")
+     * @ORM\ManyToOne(targetEntity="Dragoon\AdminBundle\Entity\Star", cascade={"persist"})
      */
     private $star;
    
     /**
      * @var \Doctrine\Common\Collections\ArrayCollection
      
-     * @ORM\ManyToOne(targetEntity="Dragoon\AdminBundle\Entity\Job")
+     * @ORM\ManyToOne(targetEntity="Dragoon\AdminBundle\Entity\Job", cascade={"persist"})
      */
     private $job;
     

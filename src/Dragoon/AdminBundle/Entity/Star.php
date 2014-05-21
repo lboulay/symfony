@@ -27,6 +27,13 @@ class Star
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="dvdfrId", type="integer", nullable=true)
+     */
+    private $dvdfrId;
     
     /**
      * __toString()
@@ -52,7 +59,7 @@ class Star
      * Set name
      *
      * @param string $name
-     * @return movies__star
+     * @return star
      */
     public function setName($name)
     {
@@ -69,5 +76,28 @@ class Star
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set dvdfr_id
+     *
+     * @param integer $id
+     * @return star
+     */
+    public function setdvdfrId($id)
+    {
+        $this->dvdfrId = $id;
+    
+        return $this;
+    }
+
+    /**
+     * Get dvdfr_id
+     *
+     * @return integer
+     */
+    public function getDvdfrId()
+    {
+        return $this->dvdfrId;
     }
 }

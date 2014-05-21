@@ -80,4 +80,14 @@ class Fiche extends AbstractType
             'titlefr'
         );
     }
+    
+    public function getAddBtn()
+    {
+        return array(
+            array(
+                'href'  => $this->generateUrl('dragoon_film_add_dvdfr', array('entity'=> 'form')),
+                'title' => 'Ajouter via DVDFR'
+            )
+        );
+    }
 }

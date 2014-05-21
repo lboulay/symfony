@@ -4,7 +4,6 @@ namespace Dragoon\AdminBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-
 class BaseController extends Controller
 {
     private $formClass = false;
@@ -16,15 +15,15 @@ class BaseController extends Controller
         
         $this->getFormClass($entity);
         $form = $this->getFormObj();
-        $headers = $this->formClass->getColumnHeader();
         
         return $this->render(
                 'DragoonAdminBundle::list.html.twig',
                 array(
-                    'datas' => $datas,
-                    'headers' => $headers,
-                    'entity' => $entity,
-                    'title' => $form->getName()
+                    'datas'   => $datas,
+                    'headers' => $this->formClass->getColumnHeader(),
+                    'entity'  => $entity,
+                    'title'   => $form->getName(),
+                    'addBtn'  => $this->getAddBouton($entity)
                 )
         );
     }
@@ -95,5 +94,19 @@ class BaseController extends Controller
         } 
         
         return $this->formClass;
+    }
+    
+    public function getAddBouton($entity)
+    {
+        return array(
+            array(
+                'href'  => $this->generateUrl('dragoon_admin_create', array('entity'=> $entity)),
+                'title' => 'Ajouter'
+            ),
+            array(
+                'href'  => $this->generateUrl('dragoon_film_add_dvdfr', array('entity'=> $entity)),
+                'title' => 'Ajouter via DVDFR'
+            )
+        );
     }
 }

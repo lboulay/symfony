@@ -36,3 +36,22 @@ dragoon_admin_delete:
     requirements:
         id: \d+
     
+dragoon_film_add_dvdfr:
+    pattern: /{entity}/create/dvdfr
+    defaults: { _controller:DragoonAdminBundle:Dvdfr:search }
+    
+dragoon_dvdfr_list:
+    pattern: /dvdfr/list/{search}
+    defaults: { _controller:DragoonAdminBundle:Dvdfr:list }
+    
+dragoon_dvdfr_view:
+    pattern: /dvdfr/view/{id}
+    defaults: { _controller:DragoonAdminBundle:Dvdfr:view }
+    requirements:
+        id: \d+
+
+dragoon_dvdfr_add:
+    pattern: /dvdfr/add/{id}
+    defaults: { _controller:DragoonAdminBundle:Dvdfr:add }
+    requirements:
+        id: \d+

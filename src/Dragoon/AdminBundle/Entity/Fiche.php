@@ -31,63 +31,63 @@ class Fiche
     /**
      * @var string
      *
-     * @ORM\Column(name="title_vo", type="string", length=255)
+     * @ORM\Column(name="title_vo", type="string", length=255, nullable=true)
      */
     private $title_vo;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="title_alt_fr", type="string", length=255)
+     * @ORM\Column(name="title_alt_fr", type="string", length=255, nullable=true)
      */
     private $title_alt_fr;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="title_alt_vo", type="string", length=255)
+     * @ORM\Column(name="title_alt_vo", type="string", length=255, nullable=true)
      */
     private $title_alt_vo;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="edition", type="string", length=255)
+     * @ORM\Column(name="edition", type="string", length=255, nullable=true)
      */
     private $edition;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="year", type="integer")
+     * @ORM\Column(name="year", type="integer", nullable=true)
      */
     private $year;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="sortie", type="date")
+     * @ORM\Column(name="sortie", type="date", nullable=true)
      */
     private $sortie;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="synopsis", type="text")
+     * @ORM\Column(name="synopsis", type="text", nullable=true)
      */
     private $synopsis;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="reference", type="string", length=255)
+     * @ORM\Column(name="reference", type="string", length=255, nullable=true)
      */
     private $reference;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="length", type="integer")
+     * @ORM\Column(name="length", type="integer", nullable=true)
      */
     private $length;
     
@@ -460,7 +460,7 @@ class Fiche
     {
         foreach ($categories as $category) {
             $category->setIdPage($this);
-            $this->addEditeur($category);
+            $this->addCategory($category);
         }
     }
 
@@ -506,7 +506,7 @@ class Fiche
     {
         foreach ($distributeurs as $distributeur) {
             $distributeur->setIdPage($this);
-            $this->addEditeur($distributeur);
+            $this->addDistributeur($distributeur);
         }
     }
 
